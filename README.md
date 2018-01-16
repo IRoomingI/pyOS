@@ -1,4 +1,4 @@
-## Discord Bot
+## PyOS
 
 This is a small python programm that emulated a really basic command line operating system.
 
