@@ -19,12 +19,12 @@ def check_user():
         return False
 
 def register():
-    name = input("Wie soll dein Benutzername lauten? ")
+    name = input("Enter a username: ")
     if name in accounts:
-        print("Benutzer existiert bereits!")
+        print("User already exists!")
         return register()
-    passwd = getpass("Neues Passwort: ")
-    check_passwd = getpass("Passwort Wiederholen: ")
+    passwd = getpass("New password: ")
+    check_passwd = getpass("Reapeat password: ")
     if passwd == check_passwd:
         data = {name: passwd}
         accounts.update(data)
@@ -34,20 +34,20 @@ def register():
         return login()
 
 def login():
-    data.set_user(input("Bitte gib deinen Benutzernamen an: "))
+    data.set_user(input("Please enter your username: "))
     if check_user():
-        passwd = getpass("Passwort: ")
+        passwd = getpass()
         if check_passwd(passwd):
-            print("Hallo %s, du wurdest erfolgreich eingeloggt." % data.user.capitalize())
+            print("Hello %s, your login was successfull." % data.user.capitalize())
         else:
-            print("Passwort nicht korrekt, bitte versuche es erneut.\n")
+            print("Incorrect password, please try again.\n")
             return login()
     else:
-        out = input("Benutzername existiert nicht!\nErneut versuchen (j) oder neuen Account erstellen (n)? ")
+        out = input("Username does not exist!\nTry again (y) or create new account (n)? ")
         if out == "n" or out == "N":
             register()
         elif out == "j" or out == "J":
             login()
         else:
-            print("Keine gültige Eingabe!\n")
+            print("Invalid input!\n")
             login()
