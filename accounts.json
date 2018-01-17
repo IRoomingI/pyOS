@@ -2,12 +2,23 @@
     "roman": {
         "passwd": "roman",
         "home_content": {
-            "files": [],
+            "files": [
+                "xD"
+            ],
             "folders": {
                 "hey": [
                     "kkk"
                 ]
             }
+        }
+    },
+    "hey": {
+        "passwd": "hey",
+        "home_content": {
+            "files": [
+                "lol"
+            ],
+            "folders": {}
         }
     }
 }
