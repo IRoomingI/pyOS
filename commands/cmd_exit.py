@@ -1,2 +1,2 @@
-def ex(args):
+def ex(args, user):
     quit()

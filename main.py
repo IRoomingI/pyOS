@@ -4,7 +4,8 @@ from run import run
 
 def main():
     login.login()
-    run(data.user)
+    if run(data.user) == "logout":
+        return main()
 
 
 main()

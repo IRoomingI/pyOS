@@ -1,4 +1,4 @@
-import data
+import data as dat
 import json
 from getpass import getpass
 
@@ -6,16 +6,28 @@ json_acc = open("accounts.json", "r", encoding="utf-8")
 accounts = json.load(json_acc)
 json_acc.close()
 
+def update_accs(accs):
+    global accounts
+    accounts = accs
+
 def check_passwd(passwd):
-    if passwd == accounts[data.user]:
+    if passwd == accounts[dat.user]["passwd"]:
+        print("Hello %s, your login was successfull." % dat.user.capitalize())
         return True
     else:
         return False
 
 def check_user():
-    if data.user in accounts:
-        return True
+    if len(accounts) > 0:
+        dat.set_user(input("Please enter your username: "))
+        dat.set_accs(accounts)
+        if dat.user in accounts:
+            return True
+        else:
+            print("Username does not exist!")
+            return False
     else:
+        print("Please create a new user!")
         return False
 
 def register():
@@ -23,6 +35,7 @@ def register():
     if name in accounts:
         print("User already exists!")
         return register()
+    dat.set_user(name)
     passwd = getpass("New password: ")
     check_passwd = getpass("Reapeat password: ")
     if passwd == check_passwd:
@@ -31,23 +44,26 @@ def register():
         json_acc = open("accounts.json", "w", encoding="utf-8")
         json.dump(accounts, json_acc, ensure_ascii=False)
         json_acc.close()
-        return login()
+        print("Hello %s, your login was successfull." % dat.user.capitalize())
+    else:
+        print("Passwords aren't matching! Please try again.")
+        return register()
 
 def login():
-    data.set_user(input("Please enter your username: "))
     if check_user():
         passwd = getpass()
-        if check_passwd(passwd):
-            print("Hello %s, your login was successfull." % data.user.capitalize())
-        else:
+        if not check_passwd(passwd):
             print("Incorrect password, please try again.\n")
             return login()
     else:
-        out = input("Username does not exist!\nTry again (y) or create new account (n)? ")
-        if out == "n" or out == "N":
-            register()
-        elif out == "j" or out == "J":
-            login()
+        if len(accounts) > 0:
+            out = input("Try again (y) or create new account (n)? ")
+            if out.lower() == "n":
+                register()
+            elif out.lower() == "y":
+                login()
+            else:
+                print("Invalid input!\n")
+                login()
         else:
-            print("Invalid input!\n")
-            login()
+            register()

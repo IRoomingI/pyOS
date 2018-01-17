@@ -1,8 +1,8 @@
 import data
 
-def ex(args):
-    if len(args) > 0 and len(data.current_dir["content"]) > 0:
-        str(args)
+def ex(args, user):
+    args = data.make_string(args)
+    if len(args) > 0 and len(data.current_dir["content"]) > 0 and args in data.current_dir["content"]:
         index = data.current_dir["content"].index(args)
         current_dir_out = data.current_dir["content"][index].__str__().replace("'", "")
         data.current_dir["content"].remove(args)
