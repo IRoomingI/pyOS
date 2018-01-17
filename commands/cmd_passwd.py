@@ -9,4 +9,4 @@ def ex(args, user):
         if passwd == passwd_conf:
             login.accounts[user]["passwd"] = passwd
     else:
-        "Password was incorrect, please try again!"
+        print("Password was incorrect, please try again!")

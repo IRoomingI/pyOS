@@ -11,7 +11,7 @@ def run(user):
         inp = input("%s/ " % data.current_dir["name"])
         invoke = inp.split(" ")[0]
         args = inp.split(" ")[1:]
-        if data.commands.__contains__(invoke):
+        if invoke in data.commands:
             out = data.commands[invoke].ex(args=args, user=user)
             if out == "logout" or out == "exit":
                 accs = login.accounts

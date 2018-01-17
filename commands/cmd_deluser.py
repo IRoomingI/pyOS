@@ -6,7 +6,6 @@ def ex(args, user):
         args = args.__str__().replace("[", "")
         args = args.replace("]", "")
         args = args.replace("'", "")
-        print(args)
         if args == "true":
             json_acc = open("accounts.json", "r", encoding="utf-8")
             accounts = json.load(json_acc)

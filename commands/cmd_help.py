@@ -1,10 +1,10 @@
 help_info = {
     "new": " filename  - creates a new 'file'. Use 'foldername/' to create a new folder",
-    "dir": "  - lists the files in your current folder",
-    "ls": "  - lists the files in your current folder",
-    "rm": " filename  - removes the chosen 'file' (use * to clear all files)",
+    "dir": "  - lists files and folders in the chosen folder",
+    "ls": "  - lists files and folders in the chosen folder",
+    "rm": " filename  - removes the chosen 'file'. Use 'foldername/' to delete a folder",
     "exit": "  - exits the python script",
-    "help": "  - shows you all commands",
+    "help": "  - shows all commands to you",
     "logout": "  - closes the current session and asks you to log back in",
     "deluser": " true  - use this command to delete your account/user (confirm with argument: true)",
     "passwd": "  - change your password"

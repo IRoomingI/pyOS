@@ -1,9 +1,9 @@
 import data
 
 def ex(args, user):
-    args = data.make_string(args)
-    if not args == "*":
-        if len(args) > 0:
+    if not data.make_string(args) == "*":
+        if len(args) == 1:
+            args = data.make_string(args)
             if "/" in args and not args.endswith("/"):
                 fol = args.split("/")[0]
                 dat = args.split("/")[1]
