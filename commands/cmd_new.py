@@ -1,17 +1,35 @@
 import data
 
 def ex(args, user):
-    if args not in data.current_dir["content"]:
-        if len(args) == 1:
-            if len(args) > 0:
-                args = data.make_string(args)
-                data.current_dir["content"].append(args)
-                current_dir_out = data.current_dir["content"][-1].__str__().replace("'", "")
-                current_dir_out = current_dir_out.replace("[", "")
-                print("successfully created file '%s'" % current_dir_out.replace("]", ""))
+    if not args == "*":
+        if data.make_string(args) not in data.current_dir["content"]:
+            if len(args) == 1:
+                if len(args) > 0:
+                    args = data.make_string(args)
+                    if "/" in args and not args.endswith("/"):
+                        fol = args.split("/")[0]
+                        dat = args.split("/")[1]
+                        if fol in data.current_dir["content"]["folders"]:
+                            data.current_dir["content"]["folders"][fol].append(dat)
+                        else:
+                            folup = {fol: []}
+                            data.current_dir["content"]["folders"].update(folup)
+                            data.current_dir["content"]["folders"][fol].append(dat)
+                        print("successfully created file '%s' in folder '%s'" % (dat, fol))
+                    elif args.endswith("/"):
+                        args = args.replace("/", "")
+                        args = {args: []}
+                        data.current_dir["content"]["folders"].update(args)
+                        args = data.make_string(args)
+                        print("successfully created folder '%s/'" % args)
+                    else:
+                        data.current_dir["content"]["files"].append(args)
+                        print("successfully created file '%s'" % args)
+                else:
+                    print("You must give this file a name!")
             else:
-                print("You must give this file a name!")
+                print("Please create only one file at a time!")
         else:
-            print("Please create only one file at a time!")
+            print("File already exists!")
     else:
-        print("File already exists!")
+        print("Can't create a file named *. Please choose another name!")

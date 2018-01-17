@@ -14,10 +14,10 @@ def ex(args, user):
             del accounts[user]
             login.update_accs(accounts)
             json_acc = open("accounts.json", "w", encoding="utf-8")
-            json.dump(accounts, json_acc, ensure_ascii=False)
+            json.dump(accounts, json_acc, ensure_ascii=False, indent=4)
             json_acc.close()
             print("Deleted user!")
-            return "logout"
+            return "deluser"
         else:
             print("Please type 'deluser true' to delete your account")
     else:

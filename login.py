@@ -20,8 +20,8 @@ def check_passwd(passwd):
 def check_user():
     if len(accounts) > 0:
         dat.set_user(input("Please enter your username: "))
-        dat.set_accs(accounts)
         if dat.user in accounts:
+            dat.set_accs(accounts)
             return True
         else:
             print("Username does not exist!")
@@ -37,12 +37,12 @@ def register():
         return register()
     dat.set_user(name)
     passwd = getpass("New password: ")
-    check_passwd = getpass("Reapeat password: ")
+    check_passwd = getpass("Repeat password: ")
     if passwd == check_passwd:
-        data = {name: passwd}
+        data = {name: {"passwd": passwd, "home_content": {"files": [], "folders": {}}}}
         accounts.update(data)
         json_acc = open("accounts.json", "w", encoding="utf-8")
-        json.dump(accounts, json_acc, ensure_ascii=False)
+        json.dump(accounts, json_acc, ensure_ascii=False, indent=4)
         json_acc.close()
         print("Hello %s, your login was successfull." % dat.user.capitalize())
     else:

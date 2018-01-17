@@ -21,7 +21,9 @@ In my opinion this is pretty useless for anybody, but I decided to just do it. J
 *   Linux/MacOS: `python3 main.py` Windows: `python main.py`
 *   That's all, now you can log in or create a new user
 
-## Commands
+## Command examples
+
+*enter 'help' into the pyOS command line to see more information*
 
 *   new _filename_  - creates a new "file"
 *   ls              - lists the files in your current folder

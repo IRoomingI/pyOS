@@ -1,1 +1,15 @@
-{"hey": {"passwd": "hey", "home_content": {"files": ["hey", "hey"]}}}
+{
+    "roman": {
+        "passwd": "roman",
+        "home_content": {
+            "files": [
+                "exe"
+            ],
+            "folders": {
+                "hey": [
+                    "geay"
+                ]
+            }
+        }
+    }
+}

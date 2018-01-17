@@ -4,7 +4,12 @@ from run import run
 
 def main():
     login.login()
-    if run(data.user) == "logout":
+    out = run(data.user)
+    if out == "logout":
+        return main()
+    elif out == "exit":
+        exit()
+    elif out == "deluser":
         return main()
 
 

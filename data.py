@@ -1,10 +1,18 @@
-from commands import cmd_new, cmd_dir, cmd_rm, cmd_exit, cmd_help, cmd_logout, cmd_deluser
+from commands import cmd_new, cmd_dir, cmd_rm, cmd_exit, cmd_help, cmd_logout, cmd_deluser, cmd_passwd
 
 user = ""
 
 def make_string(var):
-    var = var.__str__().replace("[", "")
-    var = var.replace("]", "")
+    if type(var) == list:
+        var = var.__str__().replace("[", "")
+        var = var.replace("]", "")
+    elif type(var) == dict:
+        var = var.__str__().replace("[", "")
+        var = var.replace("]", "")
+        var = var.replace("{", "")
+        var = var.replace("}", "")
+        var = var.replace(":", "")
+        var = var.replace(" ", "")
     var = var.replace("'", "")
     return var
 
@@ -15,13 +23,13 @@ def set_user(value):
     set_current_dir(user)
 
 
-current_dir = {"name": user, "content": None}
+current_dir = {"name": user, "content": {"files": [], "folders": {}}}
 
 accs = None
 def set_accs(dic):
     global accs, current_dir, user
     accs = dic
-    current_dir = {"name": user, "content": accs[user]["home_content"]["files"]}
+    current_dir = {"name": user, "content": {"files": accs[user]["home_content"]["files"], "folders": accs[user]["home_content"]["folders"]}}
 
 
 def set_current_dir(value):
@@ -37,5 +45,6 @@ commands = {
     "exit": cmd_exit,
     "help": cmd_help,
     "logout": cmd_logout,
-    "deluser": cmd_deluser
+    "deluser": cmd_deluser,
+    "passwd": cmd_passwd
 }
