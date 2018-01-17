@@ -1,6 +1,6 @@
 ## PyOS
 
-This is a small python programm that emulated a really basic command line operating system.
+This is a small python programm that emulates a really basic command line operating system.
 
 
 Programms/Languages you need to run the bot:
