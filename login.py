@@ -19,9 +19,10 @@ def check_passwd(passwd):
 
 def check_user():
     if len(accounts) > 0:
-        dat.set_user(input("Please enter your username: "))
+        dat.user = input("Please enter your username: ")
         if dat.user in accounts:
             dat.set_accs(accounts)
+            dat.set_user(dat.user)
             return True
         else:
             print("Username does not exist!")
@@ -39,8 +40,9 @@ def register():
     passwd = getpass("New password: ")
     check_passwd = getpass("Repeat password: ")
     if passwd == check_passwd:
-        data = {name: {"passwd": passwd, "home_content": {"files": [], "folders": {}}}}
+        data = {name: {"passwd": passwd, "home": {}}}
         accounts.update(data)
+        dat.set_accs(accounts)
         json_acc = open("accounts.json", "w", encoding="utf-8")
         json.dump(accounts, json_acc, ensure_ascii=False, indent=4)
         json_acc.close()
@@ -57,11 +59,11 @@ def login():
             return login()
     else:
         if len(accounts) > 0:
-            out = input("Try again (y) or create new account (n)? ")
+            out = input("Do you want to create a new account? (y/n) ")
             if out.lower() == "n":
-                register()
-            elif out.lower() == "y":
                 login()
+            elif out.lower() == "y":
+                register()
             else:
                 print("Invalid input!\n")
                 login()

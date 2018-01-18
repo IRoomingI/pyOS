@@ -6,25 +6,25 @@ def ex(args, user):
             if len(args) == 1:
                 if len(args) > 0:
                     args = data.make_string(args)
+                    path = data.current_dir["content"]
                     if "/" in args and not args.endswith("/"):
                         fol = args.split("/")[0]
                         dat = args.split("/")[1]
-                        if fol in data.current_dir["content"]["folders"]:
-                            data.current_dir["content"]["folders"][fol].append(dat)
+                        if fol in path:
+                            path.update({fol: {dat: "*"}})
                         else:
-                            folup = {fol: []}
-                            data.current_dir["content"]["folders"].update(folup)
-                            data.current_dir["content"]["folders"][fol].append(dat)
+                            folup = {fol: {dat: "*"}}
+                            path.update(folup)
                         print("successfully created file '%s' in folder '%s'" % (dat, fol))
                     elif args.endswith("/"):
-                        args = args.replace("/", "")
-                        args = {args: []}
-                        data.current_dir["content"]["folders"].update(args)
-                        args = data.make_string(args)
-                        print("successfully created folder '%s/'" % args)
+                        args = args[:-1]
+                        args = {args: {}}
+                        path.update(args)
+                        print("successfully created folder '%s/'" % data.make_string(args))
                     else:
-                        data.current_dir["content"]["files"].append(args)
-                        print("successfully created file '%s'" % args)
+                        args = {args: "*"}
+                        path.update(args)
+                        print("successfully created file '%s'" % data.make_string(args).replace("*", ""))
                 else:
                     print("You must give this file a name!")
             else:

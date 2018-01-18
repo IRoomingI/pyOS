@@ -6,7 +6,11 @@ def run(user):
     running = True
 
     while running:
-        inp = input("%s/ " % data.current_dir["name"])
+        if data.current_dir["name"] == "home":
+            folder = "%s/ " % data.current_dir["name"]
+        else:
+            folder = "%s/%s/ " % ("home", data.current_dir["name"])
+        inp = input(folder)
         invoke = inp.split(" ")[0]
         args = inp.split(" ")[1:]
         if invoke in data.commands:

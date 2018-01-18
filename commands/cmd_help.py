@@ -7,7 +7,8 @@ help_info = {
     "help": "  - shows all commands to you",
     "logout": "  - closes the current session and asks you to log back in",
     "deluser": " true  - use this command to delete your account/user (confirm with argument: true)",
-    "passwd": "  - change your password"
+    "passwd": "  - change your password",
+    "cd": "  - change your current folder (type: 'cd ..' to get back to your home folder)"
 }
 
 

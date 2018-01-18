@@ -1,24 +1,24 @@
 {
     "roman": {
         "passwd": "roman",
-        "home_content": {
-            "files": [
-                "xD"
-            ],
-            "folders": {
-                "hey": [
-                    "kkk"
-                ]
-            }
+        "home": {
+            "moin": {
+                "f": "*",
+                "giz": "*",
+                "titz": {
+                    "rawr": "*"
+                }
+            },
+            "test": "*"
         }
     },
-    "hey": {
-        "passwd": "hey",
-        "home_content": {
-            "files": [
-                "lol"
-            ],
-            "folders": {}
+    "rawr": {
+        "passwd": "rawr",
+        "home": {
+            "iWantSomeBiff": "*",
+            "giveItNow": {
+                "Biff": "*"
+            }
         }
     }
 }
