@@ -3,9 +3,9 @@ help_info = {
     "dir": "  - lists files and folders in the chosen folder",
     "ls": "  - lists files and folders in the chosen folder",
     "rm": " filename  - removes the chosen 'file'. Use 'foldername/' to delete a folder",
-    "exit": "  - exits the python script",
+    "exit": "  - closes the current session",
     "help": "  - shows all commands to you",
-    "logout": "  - closes the current session and asks you to log back in",
+    "logout": "  - closes the current session",
     "deluser": " true  - use this command to delete your account/user (confirm with argument: true)",
     "passwd": "  - change your password",
     "cd": "  - change your current folder (type: 'cd ..' to get back to your home folder)"

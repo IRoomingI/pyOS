@@ -4,16 +4,20 @@ from save import save
 from run import run
 
 def main():
-    login.login()
-    out = run(data.user)
-    if out == "logout":
-        save()
-        return main()
-    elif out == "exit":
-        save()
+    login.setup()
+    if data.user != "*":
+        out = run(data.user)
+        if out == "logout":
+            save()
+            exit()
+        elif out == "exit":
+            save()
+            exit()
+        elif out == "deluser":
+            save()
+            exit()
+    else:
         exit()
-    elif out == "deluser":
-        return main()
 
 
 main()
