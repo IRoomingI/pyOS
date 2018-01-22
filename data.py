@@ -53,15 +53,10 @@ def set_current_dir(value):
         if current_dir["name"] == "home":
             current_dir["name"] = value
             current_dir["content"] = current_path["home"][value]
-            print(current_path)
-            # del current_path["home"]
         elif value == "..":
             current_dir["content"] = current_path[next(iter(current_path))]
             current_dir["name"] = next(iter(current_path))
-            print(current_path)
-            print(current_dir)
         else:
             print(current_path)
             current_dir["name"] = value
             current_dir["content"] = current_path[current_dir["name"]]
-            print(current_path)
