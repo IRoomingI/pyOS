@@ -57,6 +57,5 @@ def set_current_dir(value):
             current_dir["content"] = current_path[next(iter(current_path))]
             current_dir["name"] = next(iter(current_path))
         else:
-            print(current_path)
             current_dir["name"] = value
             current_dir["content"] = current_path[current_dir["name"]]
